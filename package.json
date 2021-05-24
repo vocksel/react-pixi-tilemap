@@ -1,0 +1,25 @@
+{
+  "name": "react-pixi-tilemap",
+  "version": "1.0.0",
+  "description": "Use maps created with Tiled in your React-based Pixi.js games",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "npx babel src --out-dir dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "David Minnerly",
+  "license": "MIT",
+  "dependencies": {
+    "@inlet/react-pixi": "^6.5.2",
+    "pixi.js": "^6.0.4",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "tmx-parser": "^1.5.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.14.3",
+    "@babel/core": "^7.14.3",
+    "@babel/preset-env": "^7.14.2",
+    "@babel/preset-react": "^7.13.13"
+  }
+}
