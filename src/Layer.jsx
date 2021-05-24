@@ -1,3 +1,4 @@
+import React from 'react'
 import { Container } from "@inlet/react-pixi"
 import useTileSprites from './useTileSprites'
 

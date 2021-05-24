@@ -1,5 +1,6 @@
 import { useApp } from "@inlet/react-pixi"
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import tilemapMiddleware from './tilemapMiddleware'
 
 const useTilemap = (tilemap) => {
     const app = useApp()
