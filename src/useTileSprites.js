@@ -1,5 +1,32 @@
+import { Rectangle, Texture } from 'pixi.js'
 import { Sprite } from "@inlet/react-pixi"
-import { useEffect, useState } from "react"
+import React, { useEffect, useState } from "react"
+
+const getTilesetForGID = (gid, tilesets) => {
+    let result
+    for (const tileset of tilesets) {
+        if (gid >= tileset.firstGid) {
+            result = tileset
+        }
+    }
+    return result
+}
+
+const getTilesetTextures = (atlas, tileset) => {
+    const textures = []
+
+    const baseTexture = Texture.from(atlas)
+    const { margin, image, tileHeight, tileWidth, spacing} = tileset
+
+    for (let y = margin; y < image.height; y += tileHeight + spacing) {
+        for (let x = margin; x < image.width; x += tileWidth + spacing) {
+            const texture = new Texture(baseTexture, new Rectangle(x, y, tileWidth, tileHeight))
+            textures.push(texture)
+        }
+    }
+
+    return textures
+}
 
 const useTileSprites = (layer, tilesets) => {
     const [sprites, setSprites] = useState([])
