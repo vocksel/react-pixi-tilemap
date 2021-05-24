@@ -1,4 +1,4 @@
-import { Point } from "@pixi/math"
+import { Point } from "pixi.js"
 import { useEffect, useState } from "react"
 import useObjects from "./useObjects"
 

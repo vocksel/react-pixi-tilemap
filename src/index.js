@@ -1,11 +1,9 @@
 import Tilemap from './Tilemap'
 import useCollisions from './useCollisions'
 import useSpawnPoint from './useSpawnPoint'
-import tileAt from './tileAt'
 
-export default {
+export {
     Tilemap,
     useCollisions,
     useSpawnPoint,
-    tileAt,
 }

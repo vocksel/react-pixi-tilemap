@@ -1,6 +1,7 @@
 import { Container } from '@inlet/react-pixi'
-import { useEffect, useMemo } from 'react'
+import React, { useEffect, useMemo } from 'react'
 import Layer from './Layer'
+import useTilemap from './useTilemap'
 import TilemapContext from './TilemapContext'
 
 const Tilemap = ({ tilemap, tilesets, children }) => {
@@ -20,7 +21,7 @@ const Tilemap = ({ tilemap, tilesets, children }) => {
             }
         })
     }, [ tileLayers ])
-
+ 
     useEffect(() => {
         if (children) {
             if (map?.layers.find(layer => layer.name === 'Foreground') === null) {
@@ -28,7 +29,7 @@ const Tilemap = ({ tilemap, tilesets, children }) => {
             }
         }
     }, [ map ])
- 
+
     return <Container>
         <TilemapContext.Provider value={{ map, tileLayers }}>
             {layers}

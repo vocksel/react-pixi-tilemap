@@ -1,3 +1,6 @@
+import { useApp } from "@inlet/react-pixi"
+import { useState } from "react"
+
 const useTilemap = (tilemap) => {
     const app = useApp()
     const [stage, setMap] = useState(null)
