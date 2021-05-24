@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "start": "microbundle watch --jsx React.createElement",
-    "build": "microbundle build",
+    "build": "microbundle build --jsx React.createElement",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
