@@ -30,11 +30,18 @@ const Tilemap = ({ tilemap, tilesets, children }) => {
         }
     }, [ map ])
 
-    return <Container>
-        <TilemapContext.Provider value={{ map, tileLayers }}>
-            {layers}
-        </TilemapContext.Provider>
-    </Container>
+    // Only render once the map is loaded so that our hooks don't need to
+    // conditionally check if anything in TilemapContext exists.
+    if (map) {
+        return <Container>
+            <TilemapContext.Provider value={{ map, tileLayers }}>
+                {layers}
+            </TilemapContext.Provider>
+        </Container>
+    } else {
+        return null
+    }
+
 }
 
 export default Tilemap

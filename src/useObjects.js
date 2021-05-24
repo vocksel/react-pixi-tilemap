@@ -4,7 +4,7 @@ import TilemapContext from "./TilemapContext"
 const useObjects = () => {
     const { map } = useContext(TilemapContext)
 
-    const objects = useMemo(() => map?.layers
+    const objects = useMemo(() => map.layers
         .filter(layer => layer.type === 'object')
         .map(layer => layer.objects)
         .flat(),
