@@ -12,6 +12,13 @@
     "build": "microbundle build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vocksel/react-pixi-tilemap"
+  },
+  "bugs": {
+    "url": "https://github.com/vocksel/react-pixi-tilemap/issues"
+  },
   "author": "David Minnerly",
   "license": "MIT",
   "peerDependencies": {
