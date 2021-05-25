@@ -18,8 +18,10 @@ const tilemapMiddleware = (resource, next) => {
                 tiles: layer.tiles?.map((tile, index) => {
                     const x = (index % stage.width) * stage.tileWidth
                     const y = Math.floor(index / stage.width) * stage.tileHeight
+                    const width = stage.tileWidth
+                    const height = stage.tileHeight
 
-                    return { ...tile, x, y, }
+                    return { ...tile, x, y, width, height}
                 })
             }
         })
