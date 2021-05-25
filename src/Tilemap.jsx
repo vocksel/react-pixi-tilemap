@@ -1,11 +1,12 @@
-import { Container } from '@inlet/react-pixi'
-import React, { useEffect, useMemo } from 'react'
-import Layer from './Layer'
-import useTilemap from './useTilemap'
+import { useApp, Container } from '@inlet/react-pixi'
+import React, { useState, useEffect, useMemo } from 'react'
+import tilemapMiddleware from './tilemapMiddleware'
 import TilemapContext from './TilemapContext'
+import Layer from './Layer'
 
 const Tilemap = ({ tilemap, tilesets, children }) => {
-    const map = useTilemap(tilemap)
+    const app = useApp()
+    const [map, setMap] = useState(null)
 
     const tileLayers = useMemo(() => 
         map?.layers.filter(layer => layer.type === 'tile'),
@@ -22,6 +23,19 @@ const Tilemap = ({ tilemap, tilesets, children }) => {
         })
     }, [ tileLayers ])
  
+    useEffect(() => {
+        const existing = app.loader.resources[tilemap]
+
+        if (existing) {
+            setMap(existing.stage)
+        } else {
+            app.loader
+                .add(tilemap)
+                .use(tilemapMiddleware)
+                .load((_, resources) => setMap(resources[tilemap].stage))
+        }
+    }, [ app.loader, tilemap ])
+
     useEffect(() => {
         if (children) {
             if (map?.layers.find(layer => layer.name === 'Foreground') === null) {
