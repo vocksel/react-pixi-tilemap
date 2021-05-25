@@ -2,6 +2,7 @@ import Tilemap from './Tilemap'
 import useMap from './useMap'
 import useSpawnPoint from './useSpawnPoint'
 import useCollisions from './useCollisions'
+import useObjects from './useObjects'
 import useTiles from './useTiles'
 
 export {
@@ -9,5 +10,6 @@ export {
     useMap,
     useSpawnPoint,
     useCollisions,
+    useObjects,
     useTiles,
 }
