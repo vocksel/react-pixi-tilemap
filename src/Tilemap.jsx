@@ -21,7 +21,7 @@ const Tilemap = ({ tilemap, tilesets, children }) => {
                 return <Layer key={index} layer={layer} tilesets={tilesets} />
             }
         })
-    }, [ tileLayers ])
+    }, [ tileLayers, children ])
  
     useEffect(() => {
         const existing = app.loader.resources[tilemap]
@@ -47,11 +47,9 @@ const Tilemap = ({ tilemap, tilesets, children }) => {
     // Only render once the map is loaded so that our hooks don't need to
     // conditionally check if anything in TilemapContext exists.
     if (map) {
-        return <Container>
-            <TilemapContext.Provider value={{ map, tileLayers }}>
-                {layers}
-            </TilemapContext.Provider>
-        </Container>
+        return <TilemapContext.Provider value={{ map, tileLayers }}>
+            {layers}
+        </TilemapContext.Provider>
     } else {
         return null
     }
