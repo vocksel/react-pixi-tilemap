@@ -8,7 +8,9 @@
     "dist"
   ],
   "scripts": {
-    "start": "microbundle watch --jsx React.createElement",
+    "dev": "cd demo && yarn start",
+    "watch": "microbundle watch --jsx React.createElement",
+    "start": "concurrently \"yarn:watch\" \"yarn:dev\"",
     "build": "microbundle build --jsx React.createElement",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -38,6 +40,7 @@
     "tmx-parser": "github:eioo/node-tmx-parser"
   },
   "devDependencies": {
+    "concurrently": "^6.2.0",
     "microbundle": "^0.13.0"
   }
 }
