@@ -35,7 +35,7 @@
     "react": ">=17.0.2"
   },
   "dependencies": {
-    "tmx-parser": "^1.5.0"
+    "tmx-parser": "github:eioo/node-tmx-parser"
   },
   "devDependencies": {
     "microbundle": "^0.13.0"

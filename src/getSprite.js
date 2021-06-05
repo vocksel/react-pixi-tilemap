@@ -1,3 +1,4 @@
+import path from 'path'
 import { Rectangle, Texture } from 'pixi.js'
 import { Sprite } from "@inlet/react-pixi"
 import React from "react"
@@ -12,39 +13,35 @@ const getTilesetForGID = (gid, tilesets) => {
     return result
 }
 
-const getTilesetTextures = (atlas, tileset) => {
-    const textures = []
+const getTileTexture = (tile, map, tileset) => {
+    const { image, tileHeight, tileWidth } = tileset
+    const spriteIndex = tile.gid - tileset.firstGid
 
-    const baseTexture = Texture.from(atlas)
-    const { margin, image, tileHeight, tileWidth, spacing} = tileset
+    const x = (spriteIndex % (image.width / tileWidth)) * tileWidth
+    const y = Math.floor(spriteIndex / (image.height / tileHeight)) * tileHeight
 
-    for (let y = margin; y < image.height; y += tileHeight + spacing) {
-        for (let x = margin; x < image.width; x += tileWidth + spacing) {
-            const texture = new Texture(baseTexture, new Rectangle(x, y, tileWidth, tileHeight))
-            textures.push(texture)
-        }
-    }
+    const rootDir = path.dirname(map.path)
+    const baseTexture = Texture.from(`${rootDir}/${tileset.image.source}`)
 
-    return textures
+    return new Texture(baseTexture, new Rectangle(x, y, tileHeight, tileWidth))
 }
 
-const getSprite = (tile, map, tilesets) => {
+const getTileSprite = (tile, map) => {
+    const { x, y } = tile
     const tileset = getTilesetForGID(tile.gid, map.tileSets)
-    const atlas = tilesets[tileset.name]
 
-    if (atlas) {
-        const textures = getTilesetTextures(atlas, tileset)
-        const texture = textures[tile.gid - tileset.firstGid]
-        const { x, y, width, height } = tile
+    if (tileset) {
+        const { tileHeight, tileWidth } = tileset
+        const texture = getTileTexture(tile, map, tileset)
 
         return <Sprite key={`(${x},${y})`}
             texture={texture}
             x={x}
             y={y}
-            width={width}
-            height={height}
+            width={tileWidth}
+            height={tileHeight}
         />
     }
 }
 
-export default getSprite
+export default getTileSprite

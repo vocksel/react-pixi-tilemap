@@ -2,7 +2,7 @@ import React, { useMemo } from 'react'
 import { Container } from "@inlet/react-pixi"
 import getSprite from './getSprite'
 
-const getTileSprites = (layer, map, tilesets) => {
+const getTileSprites = (layer, map) => {
     const sprites = []
 
     for (let y = 0; y < map.height; y++) {
@@ -11,7 +11,7 @@ const getTileSprites = (layer, map, tilesets) => {
             const tile = layer.tiles[i]
 
             if (tile?.gid > 0) {
-                sprites.push(getSprite(tile, map, tilesets))
+                sprites.push(getSprite(tile, map))
             }
         }
     }
@@ -19,24 +19,24 @@ const getTileSprites = (layer, map, tilesets) => {
     return sprites
 }
 
-const getObjectSprites = (layer, map, tilesets) => {
+const getObjectSprites = (layer, map) => {
     return layer.objects.map(object => {
         if (object.gid) {
-            return getSprite(object, map, tilesets)
+            return getSprite(object, map)
         }
     })
 }
 
-const Layer = ({ layer, map, tilesets }) => {
+const Layer = ({ layer, map }) => {
     if (!layer.visible) {
         return null
     }
 
     const sprites = useMemo(() => {
         if (layer.type === 'tile') {
-            return getTileSprites(layer, map, tilesets)
+            return getTileSprites(layer, map)
         } else if (layer.type === 'object') {
-            return getObjectSprites(layer, map, tilesets)
+            return getObjectSprites(layer, map)
         }
     }, [ layer ] )
 
