@@ -8,7 +8,7 @@ const App = () => {
 
     return (
         <Stage width={window.innerWidth} height={window.innerHeight} options={{ resizeTo: window }}>
-            <Tilemap map={map} />
+            <Tilemap map={map} scale={0.75} />
         </Stage>
     )
 }

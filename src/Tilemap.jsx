@@ -1,8 +1,9 @@
 import React, { useEffect, useMemo } from 'react'
+import { Container } from '@inlet/react-pixi'
 import TilemapContext from './TilemapContext'
 import Layer from './Layer'
 
-const Tilemap = ({ map, children }) => {
+const Tilemap = ({ map, children, ...props }) => {
     const layers = useMemo(() => {
         return map?.layers.map((layer, index) => {
             const { name } = layer
@@ -26,7 +27,9 @@ const Tilemap = ({ map, children }) => {
     // conditionally check if anything in TilemapContext exists.
     if (map) {
         return <TilemapContext.Provider value={{ map }}>
-            {layers}
+            <Container {...props}>
+                {layers}
+            </Container>
         </TilemapContext.Provider>
     } else {
         return null
