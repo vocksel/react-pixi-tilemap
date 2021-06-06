@@ -1,6 +1,6 @@
 {
   "name": "react-pixi-tilemap",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Use maps created with Tiled in your React-based Pixi.js games",
   "source": "src/index.js",
   "main": "dist/index.js",
