@@ -4,6 +4,8 @@ This package allows you to easily make use of levels created with [Tiled](https:
 
 Supports embedded and external tilesets, collisions, child layering, and comes with a bunch of different hooks to work with tiles and objects from within your components.
 
+![Screenshot of the demo map](img/example.png)
+
 ## Install
 
 ```sh
