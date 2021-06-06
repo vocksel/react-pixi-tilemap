@@ -11,7 +11,7 @@ const getTileSprites = (layer, map) => {
             const tile = layer.tiles[i]
 
             if (tile?.gid > 0) {
-                sprites.push(getSprite(tile, map))
+                sprites.push(getSprite('tile', tile, map))
             }
         }
     }
@@ -22,7 +22,7 @@ const getTileSprites = (layer, map) => {
 const getObjectSprites = (layer, map) => {
     return layer.objects.map(object => {
         if (object.gid) {
-            return getSprite(object, map)
+            return getSprite('object', object, map)
         }
     })
 }

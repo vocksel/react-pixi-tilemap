@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.6.0" orientation="orthogonal" renderorder="right-down" width="42" height="34" tilewidth="32" tileheight="32" infinite="0" nextlayerid="8" nextobjectid="3">
+<map version="1.5" tiledversion="1.7.0" orientation="orthogonal" renderorder="right-down" width="42" height="34" tilewidth="32" tileheight="32" infinite="0" nextlayerid="8" nextobjectid="8">
  <tileset firstgid="1" source="TX Plant.tsx"/>
  <tileset firstgid="257" source="TX Tileset Grass.tsx"/>
  <tileset firstgid="321" source="TX Shadow Plant.tsx"/>
@@ -237,5 +237,8 @@
  <objectgroup id="2" name="Objects">
   <object id="1" name="Spawn" x="480" y="704" width="32" height="32"/>
   <object id="2" name="Exit" x="1295.75" y="799.67" width="16.25" height="94"/>
+  <object id="3" gid="1222" x="275.333" y="460.667" width="32" height="32"/>
+  <object id="6" gid="1204" x="615.583" y="684.25" width="48" height="48"/>
+  <object id="7" gid="1238" x="704.667" y="640" width="32" height="32"/>
  </objectgroup>
 </map>

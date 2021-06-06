@@ -26,20 +26,25 @@ const getTileTexture = (tile, map, tileset) => {
     return new Texture(baseTexture, new Rectangle(x, y, tileHeight, tileWidth))
 }
 
-const getTileSprite = (tile, map) => {
-    const { x, y } = tile
+const getTileSprite = (tileType, tile, map) => {
     const tileset = getTilesetForGID(tile.gid, map.tileSets)
 
     if (tileset) {
-        const { tileHeight, tileWidth } = tileset
+        const { x, width, height } = tile
         const texture = getTileTexture(tile, map, tileset)
+
+        // Objects are bottom aligned for some reason. This pushes them up so they align with the rest of the tilemap.
+        let y = tile.y
+        if (tileType === 'object') {
+            y -= height
+        }
 
         return <Sprite key={`(${x},${y})`}
             texture={texture}
             x={x}
             y={y}
-            width={tileWidth}
-            height={tileHeight}
+            width={width}
+            height={height}
         />
     }
 }
